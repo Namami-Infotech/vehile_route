@@ -1,5 +1,5 @@
 // const API_BASE = "http://localhost:5005/api";
-// const API_BASE = "https://namami-infotech.com/vechileoptimize/api";
+const API_BASE = "https://namami-infotech.com/vechileoptimize/api";
 export async function fetchWarehouses() {
   const response = await fetch(`${API_BASE}/warehouses`);
   if (!response.ok) {
