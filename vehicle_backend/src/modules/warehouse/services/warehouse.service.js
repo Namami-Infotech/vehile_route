@@ -1,7 +1,7 @@
 const { Warehouse } = require("../../../core/models");
 
 async function getAllWarehouses() {
-  return Warehouse.findAll({ order: [["id", "ASC"]] });
+  return Warehouse.findAll({ order: [["id", "DESC"]] });
 }
 
 async function createWarehouse({ name, address, lat, lng, maxCapacity }) {
