@@ -188,8 +188,24 @@ class RouteService {
 
     // 5. Shortest Route Selection Logic
     // Sort routes by total distance ascending (Index 0 will be the absolute shortest)
-    calculatedRoutes.sort((a, b) => a.total_distance_km - b.total_distance_km);
+    // calculatedRoutes.sort((a, b) => a.total_distance_km - b.total_distance_km);
 
+    // const singleShortestRoute = calculatedRoutes[0];
+    //extra work ---------------------------
+    const maxStoresCovered = Math.max(
+      ...calculatedRoutes.map((route) => route.total_touchpoints),
+    );
+
+    calculatedRoutes.sort((a, b) => {
+      if (b.total_touchpoints !== a.total_touchpoints) {
+        return b.total_touchpoints - a.total_touchpoints;
+      }
+
+      return a.total_distance_km - b.total_distance_km;
+    });
+
+    // First route is now:
+    // maximum stores + shortest distance
     const singleShortestRoute = calculatedRoutes[0];
 
     return {
